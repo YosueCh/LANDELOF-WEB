@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoMdMenu } from "react-icons/io";
+import SearchBar from "./SearchBar";
 const Nabvar = () => {
   return (
     <>
@@ -60,7 +61,11 @@ const Nabvar = () => {
             <TiShoppingCart className="h-6 w-6 " />
             <span className="absolute -top-2 bg-lande-peach text-white text-xs rounded-full px-1.5 py-0.5">4</span>
           </button>
-          {/* Search - Icon */}
+          {/* Search */}
+          <div className="overflow-hidden">
+            <SearchBar />
+          </div>
+          
 
           <button className="md:hidden">
             <IoMdMenu  className="h-6 w-6 text-lande-willow" />
