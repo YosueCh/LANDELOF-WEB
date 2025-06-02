@@ -8,7 +8,12 @@ export default {
     extend: {
       colors: {
         "lande-orang" : "#e3a56b",
-        "lande-amber" : "#451A03"
+        "lande-amber" : "#451A03",
+        "lande-willow" : "#96875a",
+        "lande-peach" : "#e36b6b",
+
+        
+
 
       }
     },
