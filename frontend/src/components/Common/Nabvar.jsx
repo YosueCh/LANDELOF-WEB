@@ -3,7 +3,16 @@ import { FaRegUser } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoMdMenu } from "react-icons/io";
 import SearchBar from "./SearchBar";
+import CartDrawer from "../Layout/CartDrawer";
+import { useState } from "react";
+
 const Nabvar = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleCartDrawer = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
   return (
     <>
       <nav
@@ -57,21 +66,26 @@ const Nabvar = () => {
           >
             <FaRegUser className="h-6 w-6 " />
           </Link>
-          <button className="relative text-lande-willow hover:text-lande-amber">
+          <button
+            onClick={toggleCartDrawer}
+            className="relative text-lande-willow hover:text-lande-amber"
+          >
             <TiShoppingCart className="h-6 w-6 " />
-            <span className="absolute -top-2 bg-lande-peach text-white text-xs rounded-full px-1.5 py-0.5">4</span>
+            <span className="absolute -top-2 bg-lande-peach text-white text-xs rounded-full px-1.5 py-0.5">
+              4
+            </span>
           </button>
           {/* Search */}
           <div className="overflow-hidden">
             <SearchBar />
           </div>
-          
 
           <button className="md:hidden">
-            <IoMdMenu  className="h-6 w-6 text-lande-willow" />
+            <IoMdMenu className="h-6 w-6 text-lande-willow" />
           </button>
         </div>
       </nav>
+      <CartDrawer drawerOpen={drawerOpen} toggleCartDrawer={toggleCartDrawer} />
     </>
   );
 };

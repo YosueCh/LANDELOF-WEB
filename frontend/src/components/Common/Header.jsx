@@ -2,7 +2,7 @@ import Topbar from "../Layout/Topbar";
 import Nabvar from "./Nabvar";
 
 const Header = () => {
-  return <header>
+  return <header className="border-b border-lande-peach-ligth-2">
     {/* Topbar*/}
     <Topbar />
     {/* navbar*/}

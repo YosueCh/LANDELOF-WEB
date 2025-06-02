@@ -11,7 +11,8 @@ export default {
         "lande-amber" : "#451A03",
         "lande-willow" : "#96875a",
         "lande-peach" : "#e36b6b",
-        "lande-peach-ligth" : "#edc5c5"
+        "lande-peach-ligth" : "#edc5c5",
+        "lande-peach-ligth-2" : "#f5e1e1"
 
         
 
