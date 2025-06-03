@@ -61,10 +61,3 @@
     font-family: "Inter", sans-serif;
   }
 }
-
-@layer utilities {
-  .font-bebas { font-family: "Bebas Neue", sans-serif; }
-  .font-jura { font-family: "Jura", sans-serif; }
-  .font-lato { font-family: "Lato", sans-serif; }
-  .font-quicksand { font-family: "Quicksand", sans-serif; }
-}

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
+import CartContents from "../Cart/CartContents";
+import TermsModal from "../Modals/TermsModal";
 
-const CartDrawer = ({drawerOpen, toggleCartDrawer}) => {
-
+const CartDrawer = ({ drawerOpen, toggleCartDrawer }) => {
+  const [showTerms, setShowTerms] = useState(false);
 
   return (
     <div
-      className={`fixed top-0 right-0 w-3/4 sm:w-1/2 md:w-1/4 h-full bg-white shadow-lg transform transition-transform duration-300 flex flex-col z-50 ${
+      className={`fixed top-0 right-0 w-3/4 sm:w-1/2 md:w-[30rem] lg:w-1/4 h-full bg-white shadow-lg transform transition-transform duration-300 flex flex-col z-50 ${
         drawerOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
@@ -16,6 +18,34 @@ const CartDrawer = ({drawerOpen, toggleCartDrawer}) => {
           <HiMiniXMark className="h-6 w-6 text-lande-peach" />
         </button>
       </div>
+      {/* Cart content with scrollable area */}
+      <div className="flex-grow p-4 overflow-y-auto">
+        <h2 className="text-xl font-bebas mb-4">Tu carrito</h2>
+        <CartContents />
+      </div>
+
+      {/*Checkout button fixed at the bottom */}
+      <div className="p-4 bg-white sticky bottom-0">
+        <button className="w-full bg-lande-peach-2 text-white py-3 rounded-lg font-jura hover:bg-lande-peach transition">
+          Ir a compra
+        </button>
+        <p className="font-jura text-lande-amber text-sm text-center tracking-tighter ">
+          {" "}
+          Cargos por envío y descuentos aplicables al pagar{" "}
+        </p>
+        <p className="font-jura text-lande-amber text-sm text-center tracking-tighter">
+          Al continuar, aceptas nuestros{" "}
+          <button
+            onClick={() => setShowTerms(true)}
+            className="underline hover:text-lande-peach transition-colors"
+          >
+            Términos y Condiciones
+          </button>
+        </p>
+      </div>
+
+      {/* Usa el nuevo componente modal */}
+      <TermsModal isOpen={showTerms} onClose={() => setShowTerms(false)} />
     </div>
   );
 };
