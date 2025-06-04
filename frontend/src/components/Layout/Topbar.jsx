@@ -8,7 +8,7 @@ const Topbar = () => {
       <div className="container mx-auto flex items-center justify-between px-4">
         {/* Texto centrado - ocupa espacio flexible */}
         <div className="flex-grow text-center px-4">
-          <span className="text-sm md:text-base font-jura">
+          <span className="text-sm md:text-base font-quicksand">
             Diseño y calidad que perdura - Envíos a todo México
           </span>
         </div>
