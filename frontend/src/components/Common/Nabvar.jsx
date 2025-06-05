@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 import CartDrawer from "../Layout/CartDrawer";
 import { useState } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
+import logo from "../../assets/images/logo.png";
 
 const Nabvar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -22,69 +23,82 @@ const Nabvar = () => {
   return (
     <>
       <nav className="container mx-auto flex items-center justify-between py-4 px-6">
-        {/* Left - Logo */}
-        <div>
-          <Link to="/" className="text-2xl font-medium">
-            Landelof Ceramics
+        {/* Left - Menu and Search (mobile/tablet) */}
+        <div className="flex items-center space-x-4 md:hidden">
+          <button onClick={toggleNavDrawer}>
+            <IoMdMenu className="h-6 w-6 text-lande-willow" />
+          </button>
+          <div className="overflow-hidden">
+            <SearchBar />
+          </div>
+        </div>
+
+        {/* Center - Logo */}
+        <div className="flex-1 flex justify-center md:flex-none md:ml-10 lg:ml-20">
+          <Link to="/">
+            <section>
+              <img
+                src={logo}
+                alt="hero"
+                className="h-14 md:h-20 w-auto"
+              />
+            </section>
           </Link>
         </div>
-        {/* Center - Navigation */}
-        <div className="hidden md:flex space-x-6">
+
+        {/* Center - Navigation (desktop) */}
+        <div className="hidden md:flex space-x-6 mx-4 flex-1 justify-center">
           <Link
             to="#"
-            className=" text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
+            className="text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
           >
             Inicio
           </Link>
           <Link
             to="#"
-            className=" text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
+            className="text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
           >
             Productos
           </Link>
           <Link
             to="#"
-            className=" text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
+            className="text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
           >
             Taller
           </Link>
           <Link
             to="#"
-            className=" text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
+            className="text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
           >
             Nosotros
           </Link>
           <Link
             to="#"
-            className=" text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
+            className="text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
           >
             Contacto
           </Link>
         </div>
+
         {/* Right - Icons */}
-        <div className=" flex items-center space-x-4">
+        <div className="flex items-center space-x-4">
+          <div className="hidden md:block overflow-hidden">
+            <SearchBar />
+          </div>
           <Link
             to="/profile"
-            className=" text-lande-willow hover:text-lande-amber"
+            className="text-lande-willow hover:text-lande-amber"
           >
-            <FaRegUser className="h-6 w-6 " />
+            <FaRegUser className="h-6 w-6" />
           </Link>
           <button
             onClick={toggleCartDrawer}
             className="relative text-lande-willow hover:text-lande-amber"
           >
-            <TiShoppingCart className="h-6 w-6 " />
+            <TiShoppingCart className="h-6 w-6" />
             <span className="absolute -top-2 bg-lande-peach text-white text-xs rounded-full px-1.5 py-0.5">
               4
             </span>
-          </button>
-          {/* Search */}
-          <div className="overflow-hidden">
-            <SearchBar />
-          </div>
-
-          <button onClick={toggleNavDrawer} className="md:hidden">
-            <IoMdMenu className="h-6 w-6 text-lande-willow" />
           </button>
         </div>
       </nav>
@@ -92,7 +106,7 @@ const Nabvar = () => {
 
       {/* Overlay para el fondo oscuro */}
       {navDrawerOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
           onClick={toggleNavDrawer}
         />
@@ -110,7 +124,7 @@ const Nabvar = () => {
           </button>
         </div>
         <div className="p-4">
-          <h2 className="text-xl font-bebas mb-4">Menu</h2>
+          <h2 className="text-3xl font-bebas mb-4">Menu</h2>
           <nav className="flex flex-col space-y-4">
             <Link
               to="#"
