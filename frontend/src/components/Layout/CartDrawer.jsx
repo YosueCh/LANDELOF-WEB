@@ -20,7 +20,7 @@ const CartDrawer = ({ drawerOpen, toggleCartDrawer }) => {
       </div>
       {/* Cart content with scrollable area */}
       <div className="flex-grow p-4 overflow-y-auto">
-        <h2 className="text-xl font-bebas mb-4">Tu carrito</h2>
+        <h2 className="text-3xl font-bebas mb-4">Tu carrito</h2>
         <CartContents />
       </div>
 

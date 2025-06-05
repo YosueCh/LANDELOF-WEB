@@ -20,7 +20,7 @@ const SearchBar = () => {
   return (
     <div
       className={`flex items-center justify-center w-full transition-all duration-300 ${
-        isOpen ? "absolute top-0 left-0 w-full bg-white h-24 z-50" : "w-auto"
+        isOpen ? "absolute top-0 left-0 w-full bg-white h-32 sm:h-36 md:h-40 z-50" : "w-auto"
       } `}
     >
       {isOpen ? (
@@ -47,7 +47,7 @@ const SearchBar = () => {
           <button
             type="button"
             onClick={handleSearchToggle}
-            className="absolute right-20 top-1/2 transform -translate-y-1/2 text-lande-peach-ligth hover:text-lande-peach"
+            className="absolute right-11 top-1/2 transform -translate-y-1/2 text-lande-peach-ligth hover:text-lande-peach"
           >
             <HiMiniXMark className="h-6 w-6" />
           </button>
