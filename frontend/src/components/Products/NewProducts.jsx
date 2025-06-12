@@ -118,6 +118,7 @@ const NewProducts = () => {
     setStartX(e.pageX);
     setScrollLeft(scrollRef.current.scrollLeft);
     scrollRef.current.style.scrollBehavior = "auto";
+    scrollRef.current.style.scrollSnapType = "none";
     document.body.style.cursor = "grabbing";
     document.body.style.userSelect = "none";
   };
@@ -140,7 +141,8 @@ const NewProducts = () => {
     if (isDragging) {
       setIsDragging(false);
       scrollRef.current.style.scrollBehavior = "smooth";
-      scrollRef.current.style.cursor = "grab";
+      scrollRef.current.style.scrollSnapType = "x mandatory"; // Reactiva snap al soltar
+      document.body.style.cursor = "";
       document.body.style.userSelect = "";
     }
   };
@@ -234,9 +236,11 @@ const NewProducts = () => {
         style={{
           scrollBehavior: "smooth",
           scrollSnapType: "x mandatory",
-          WebkitOverflowScrolling: "touch", 
+          WebkitOverflowScrolling: "touch",
           overflowScrolling: "touch",
-          willChange: "scroll-position", 
+          willChange: "transform", // Mejor para performance en drag
+          scrollbarWidth: "none", // Oculta scrollbar en Firefox
+          msOverflowStyle: "none",
         }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
