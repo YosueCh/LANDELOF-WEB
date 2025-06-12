@@ -101,38 +101,60 @@ const NewProducts = () => {
     },
   ];
 
+  const scroll = (direction) => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const scrollAmount = container.clientWidth * 0.8;
+    if (direction === "left") {
+      container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    } else {
+      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
   const handleMouseDown = (e) => {
     setIsDragging(true);
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setCanScrollLeft(scrollLeft.current.scrollLeft);
+    setStartX(e.pageX);
+    setScrollLeft(scrollRef.current.scrollLeft);
+    scrollRef.current.style.scrollBehavior = "auto";
+    document.body.style.cursor = "grabbing";
+    document.body.style.userSelect = "none";
   };
 
   const handleMouseMove = (e) => {
     if (!isDragging) return;
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = x - startX;
+
+    e.preventDefault();
+    const x = e.pageX;
+    const walk = (x - startX) * 3;
     scrollRef.current.scrollLeft = scrollLeft - walk;
+
+    // Actualiza los botones durante el arrastre
+    requestAnimationFrame(() => {
+      updateScrollButtons();
+    });
   };
 
   const handleMouseUpOrLeave = () => {
-    setIsDragging(false);
-  };
-
-  const scroll = (direction) => {
-    const scrollAmount = direction === "left" ? -300 : 300;
-    scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    if (isDragging) {
+      setIsDragging(false);
+      scrollRef.current.style.scrollBehavior = "smooth";
+      scrollRef.current.style.cursor = "grab";
+      document.body.style.userSelect = "";
+    }
   };
 
   //Update Scroll Buttons
   const updateScrollButtons = () => {
     const container = scrollRef.current;
-    if (container) {
-      const { scrollLeft, scrollWidth, clientWidth } = container;
-      const tolerance = 1; // Margen para errores de redondeo
+    if (!container) return;
 
-      setCanScrollLeft(scrollLeft > tolerance);
-      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - tolerance);
-    }
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    const tolerance = 1;
+
+    setCanScrollLeft(scrollLeft > tolerance);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - tolerance);
 
     console.log({
       scrollLeft: container.scrollLeft,
@@ -153,13 +175,12 @@ const NewProducts = () => {
     container.addEventListener("scroll", updateScrollButtons);
     window.addEventListener("resize", handleResize);
 
-
-    const timer = setTimeout(updateScrollButtons, 100);
+    // Verificación inicial
+    updateScrollButtons();
 
     return () => {
       container.removeEventListener("scroll", updateScrollButtons);
       window.removeEventListener("resize", handleResize);
-      clearTimeout(timer);
     };
   }, [newProducts]);
 
@@ -173,7 +194,7 @@ const NewProducts = () => {
         </p>
 
         {/*Scroll Buttons */}
-        <div className="absolute right-0 bottom-[-30px] flex space-x-2">
+        <div className=" right-0 bottom-[-30px] flex justify-center mt-6 space-x-2">
           <button
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
@@ -207,8 +228,16 @@ const NewProducts = () => {
       {/* Scrollable Content */}
       <div
         ref={scrollRef}
-        className={`container mx-auto overflow-x-auto flex space-x-6 relative snap-x snap-mandatory ${isDragging ? "cursor-grabbing" : "cursor-grab" }`}
-        style={{ scrollBehavior: 'smooth' }}
+        className={`container mx-auto overflow-x-auto flex space-x-6 relative snap-x snap-mandatory ${
+          isDragging ? "cursor-grabbing" : "cursor-grab"
+        }`}
+        style={{
+          scrollBehavior: "smooth",
+          scrollSnapType: "x mandatory",
+          WebkitOverflowScrolling: "touch", 
+          overflowScrolling: "touch",
+          willChange: "scroll-position", 
+        }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUpOrLeave}
