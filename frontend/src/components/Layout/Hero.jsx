@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import heroImg from "../../assets/images/heroImg.jpg";
 
 const Hero = () => {
@@ -18,11 +18,14 @@ const Hero = () => {
             Selección artesanal que llega a tu hogar
           </p>
           <Link
-  to="#"
-  className=" text-white px-6 py-1 rounded-none font-quicksand text-lg tracking-wide hover:bg-lande-peach-ligth transition-colors duration-300 border-2 border-x-lande-peach-ligth-2 shadow-md hover:shadow-lg transform hover:-translate-y-1"
->
-  Ver colección
-</Link>
+            to="#"
+            className="text-white px-6 py-1 rounded-none font-quicksand text-lg tracking-wide 
+           hover:bg-lande-peach-ligth hover:bg-opacity-50 transition-colors duration-300 
+           border-2 border-x-lande-peach-ligth-2 shadow-md hover:shadow-lg 
+           transform hover:-translate-y-1"
+          >
+            Ver colección
+          </Link>
         </div>
       </div>
     </section>
