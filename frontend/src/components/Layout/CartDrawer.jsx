@@ -19,21 +19,21 @@ const CartDrawer = ({ drawerOpen, toggleCartDrawer }) => {
         </button>
       </div>
       {/* Cart content with scrollable area */}
-      <div className="flex-grow p-4 overflow-y-auto">
+      <div className="flex-grow px-4 pb-4  overflow-y-auto">
         <h2 className="text-3xl font-bebas mb-4">Tu carrito</h2>
         <CartContents />
       </div>
 
       {/*Checkout button fixed at the bottom */}
       <div className="p-4 bg-white sticky bottom-0">
-        <button className="w-full bg-lande-peach-2 text-white py-3 rounded-lg font-jura hover:bg-lande-peach transition">
+        <button className="w-full bg-lande-peach-2 text-white py-1 rounded-lg font-quicksand hover:bg-lande-peach transition">
           Ir a compra
         </button>
-        <p className="font-jura text-lande-amber text-sm text-center tracking-tighter ">
+        <p className="font-quicksand text-lande-amber text-xs text-center tracking-tighter ">
           {" "}
           Cargos por envío y descuentos aplicables al pagar{" "}
         </p>
-        <p className="font-jura text-lande-amber text-sm text-center tracking-tighter">
+        <p className="font-quicksand text-lande-amber text-xs text-center tracking-tighter">
           Al continuar, aceptas nuestros{" "}
           <button
             onClick={() => setShowTerms(true)}

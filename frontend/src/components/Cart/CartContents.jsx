@@ -31,24 +31,24 @@ const CartContents = () => {
             <img
               src={product.image}
               alt={product.name}
-              className="w-20 h-24 object-cover mr-4 rounded"
+              className="w-20 h-20 object-cover mr-4 rounded"
             />
             <div>
-              <h3>{product.name}</h3>
-              <p className="text-sm text-gray-500">color: {product.color}</p>
+              <h3 className="font-bold">{product.name}</h3>
+              <p className="text-sm text-gray-500">Color: {product.color}</p>
               <div className="flex items-center mt-2">
-                <button className="border rounded px-2 py-0 text-xl font-lato">
+                <button className="border rounded px-2 py-0 text-sm font-bold ">
                   -
                 </button>
-                <span className="mx-4 "> {product.quantity}</span>
-                <button className="border rounded px-2 py-0 text-xl font-lato">
+                <span className="mx-3 "> {product.quantity}</span>
+                <button className="border rounded px-2 py-0 text-sm  ">
                   +
                 </button>
               </div>
             </div>
           </div>
           <div>
-            <p>$ {product.price.toLocaleString()}</p>
+            <p className="font-bold">$ {product.price.toLocaleString()}</p>
             <button>
             <GoTrash className="h-4 w-4 mt-2 text-lande-peach ml-4" />
             </button>
