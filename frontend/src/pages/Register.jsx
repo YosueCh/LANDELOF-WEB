@@ -3,28 +3,58 @@ import { Link } from "react-router-dom";
 import register from "../assets/images/register.jpg";
 
 const Register = () => {
-  const [name, setName] = useState(""); 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Usuario Registrado:", {
+      firstName,
+      lastName,
+      email,
+      password,
+    });
+  };
 
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 md:p-12">
-        <form className="w-full max-w-md bg-white p-8 rounded-lg  border border-lande-peach-ligth-2 shadow-xl min-h-[500px] flex flex-col justify-center">
-          <h2 className="text-3xl font-bebas text-center mb-2">Crear una cuenta</h2>
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md bg-white p-8 rounded-lg  border border-lande-peach-ligth-2 shadow-xl min-h-[500px] flex flex-col justify-center"
+        >
+          <h2 className="text-3xl font-bebas text-center mb-2">
+            Crear una cuenta
+          </h2>
           <p className="text-center mb-6 font-quicksand tracking-tighter text-sm text-gray-500 ">
             ¡Empecemos! Por favor, ingresa tus datos
           </p>
 
-          <div className="mb-4 ">
-            <label className="block text-sm font-semibold mb-2 ">Nombre</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full text-sm p-2 border rounded tracking-tighter font-quicksand"
-              placeholder="Ingresa tu correo electrónico "
-            />
+          <div className="flex gap-4 mb-4">
+            <div className="flex-1">
+              <label className="block text-sm font-semibold mb-2">Nombre</label>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full text-sm p-2 border rounded tracking-tighter font-quicksand"
+                placeholder="Nombre"
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-sm font-semibold mb-2">
+                Apellido
+              </label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full text-sm p-2 border rounded tracking-tighter font-quicksand"
+                placeholder="Apellido"
+              />
+            </div>
           </div>
 
           <div className="mb-4 ">
@@ -34,7 +64,7 @@ const Register = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full text-sm p-2 border rounded tracking-tighter font-quicksand"
-              placeholder="Ingresa tu correo electrónico "
+              placeholder="Correo electrónico "
             />
           </div>
 
@@ -52,15 +82,17 @@ const Register = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-lande-peach-ligth text-white p-4 rounded-lg font-quicksand hover:bg-lande-peach transition"
+            className="w-full bg-lande-peach-ligth text-white p-4 rounded-lg font-quicksand hover:bg-lande-peach transition uppercase"
           >
-            Login
+            Crear cuenta
           </button>
           <p className="mt-6 text-center text-sm">
-            ¿Nuevo Usuario?
-            <Link to="/register" className="text-lande-orang">
-              {" "}
-              Regístrate
+            ¿Ya tienes una cuenta?
+            <Link
+              to="/register"
+              className="text-lande-orang underline pl-2 uppercase"
+            >
+              Inicia sesión
             </Link>
           </p>
         </form>

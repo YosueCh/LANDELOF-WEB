@@ -6,10 +6,20 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Usuario que ingresó:", {
+      email,
+      password,
+    });
+  };
+
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 md:p-12">
-        <form className="w-full max-w-md bg-white p-8 rounded-lg  border border-lande-peach-ligth-2 shadow-xl min-h-[500px] flex flex-col justify-center">
+        <form 
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-white p-8 rounded-lg  border border-lande-peach-ligth-2 shadow-xl min-h-[500px] flex flex-col justify-center">
           <h2 className="text-3xl font-bebas text-center mb-2">Login</h2>
           <p className="text-center mb-6 font-quicksand tracking-tighter text-sm text-gray-500 ">
             ¡Bienvenido! Introduce tu email y contraseña para continuar.
@@ -40,13 +50,16 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-lande-peach-ligth text-white p-4 rounded-lg font-quicksand hover:bg-lande-peach transition"
+            className="w-full bg-lande-peach-ligth text-white p-4 rounded-lg font-quicksand hover:bg-lande-peach transition uppercase"
           >
             Inicia sesión
           </button>
           <p className="mt-6 text-center text-sm">
-            ¿No tienes una cuenta? 
-            <Link to="/register" className="text-lande-orang underline pl-2">
+            ¿No tienes una cuenta?
+            <Link
+              to="/register"
+              className="text-lande-orang underline pl-2 uppercase"
+            >
               Regístrate
             </Link>
           </p>
@@ -54,7 +67,11 @@ const Login = () => {
       </div>
       <div className="hidden md:block w-1/2  bg-lande-peach-2">
         <div className="h-full flex flex-col justify-center items-center">
-            <img src={login} alt="Inicio de Sesón" className="h-[750px] w-full object-cover object-[center_90%] " />
+          <img
+            src={login}
+            alt="Inicio de Sesón"
+            className="h-[750px] w-full object-cover object-[center_90%] "
+          />
         </div>
       </div>
     </div>
