@@ -24,7 +24,7 @@ const selectedProduct = {
 };
 
 const ProductDetails = () => {
-  const [mainImage, setMainImage] = useState("");
+  const [mainImage, setMainImage] = useState("null");
   const [selectedColor, setSelectedColor] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -59,7 +59,7 @@ const ProductDetails = () => {
         duration: 2000,
       });
       setIsButtonDisabled(false);
-    }, 1000 );
+    }, 1000);
   };
 
   return (
@@ -117,7 +117,7 @@ const ProductDetails = () => {
             <p className="text-xl text-lande-peach mb-2">
               $ {selectedProduct.price}
             </p>
-            <p className="text-gray-600" mb-4>
+            <p className="text-gray-600 mb-4" >
               {selectedProduct.description}
             </p>
 
@@ -169,11 +169,11 @@ const ProductDetails = () => {
             <button
               onClick={handleAddToCart}
               disabled={isButtonDisabled}
-             className={`font-quicksand text-white py-2 px-6 rounded w-full mb-4 ${
-    isButtonDisabled 
-      ? "bg-gray-400 cursor-not-allowed" 
-      : "bg-lande-peach-2 hover:bg-lande-peach"
-  }`}
+              className={`font-quicksand text-white py-2 px-6 rounded w-full mb-4 ${
+                isButtonDisabled
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-lande-peach-2 hover:bg-lande-peach"
+              }`}
             >
               {isButtonDisabled ? "Agregando..." : "Agregar a carrito"}
             </button>

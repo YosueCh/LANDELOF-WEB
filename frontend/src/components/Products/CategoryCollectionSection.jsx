@@ -14,12 +14,12 @@ const CategoryCollectionSection = () => {
             className="w-full h-[400px] object-cover object-[center_80%] "
           />
           <div className=" absolute bottom-8 left-8 lg:left-20 xl:left-20 bg-white bg-opacity-90 p-4  ">
-            <h2 className="text-lg  text-lande-amber  ">
+            <h2 className="text-lg  text-gray-700  ">
                Colección de Vajillas
             </h2>
             <Link
               to="/collections/all?category=crockery"
-              className="text-lande-amber underline text-sm font-quicksand"
+              className="text-gray-700 underline text-sm font-quicksand"
             >
               Ver ahora
             </Link>
@@ -34,12 +34,12 @@ const CategoryCollectionSection = () => {
             className="w-full h-[400px] object-cover object-[center_80%] "
           />
           <div className=" absolute bottom-8 left-8 llg:left-20 xl:left-20 bg-white bg-opacity-90 p-4  ">
-            <h2 className="text-lg  text-lande-amber  ">
+            <h2 className="text-lg  text-gray-700  ">
                Colección de Decoración
             </h2>
             <Link
               to="/collections/all?category=decoration"
-              className="text-lande-amber  underline text-sm font-quicksand" 
+              className="text-gray-700 underline text-sm font-quicksand" 
             >
               Ver ahora
             </Link>
