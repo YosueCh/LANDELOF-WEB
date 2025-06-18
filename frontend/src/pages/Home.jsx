@@ -10,16 +10,15 @@ const Home = () => {
     <div>
       <Hero />
       <FeaturedCollection />
-      <CategoryCollectionSection />
+      <NewProducts />
       <FeaturesSection />
       {/*Best Seller  */}
-      <h2 className="text-3xl text-center font-bebas mb-4  py-8  "> Lo más vendido</h2>
+      <h2 className="text-3xl text-center font-bebas mb-4  py-8  ">
+        {" "}
+        Lo más vendido
+      </h2>
       <ProductDetails />
-
-      <NewProducts />
-
-
-      
+      <CategoryCollectionSection />
     </div>
   );
 };

@@ -49,13 +49,13 @@ const Nabvar = () => {
         {/* Center - Navigation (desktop) */}
         <div className="hidden md:flex space-x-6 mx-4 flex-1 justify-center">
           <Link
-            to="#"
+            to="/"
             className="text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
           >
             Inicio
           </Link>
           <Link
-            to="#"
+            to="products/all"
             className="text-lande-willow hover:text-lande-amber text-sm font-Lato uppercase"
           >
             Productos
