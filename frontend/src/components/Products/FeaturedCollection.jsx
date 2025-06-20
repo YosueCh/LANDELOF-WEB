@@ -3,8 +3,8 @@ import featured from "../../assets/images/featured.jpg";
 
 const FeaturedCollection = () => {
   return (
-    <section className=" py-16 px-4 lg:px-20 xl:px-10">
-      <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center bg-lande-peach-ligth-2 rounded-3xl">
+    <section className=" py-16 md:pt-96 px-4 lg:pt-10 xl:px-10">
+      <div className="container mx-auto flex flex-col-reverse lg:flex-row items-stretch bg-lande-peach-ligth-2 rounded-3xl md:h-[400px]">
         {/*Left Content */}
         <div className="lg:w-1/2 p-8 text-center lg:text-left ">
           <h2 className="text-lg font-semibold mb-2">Técnica y autenticidad</h2>

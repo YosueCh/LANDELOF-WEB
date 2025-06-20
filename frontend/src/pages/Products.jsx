@@ -1,6 +1,8 @@
 import { LiaFilterSolid } from "react-icons/lia";
 import { useEffect, useState, useRef } from "react";
 import FilterSideBar from "../components/Products/FilterSideBar";
+import SortOptions from "../components/Products/SortOptions";
+import ProductGrid from "../components/Products/ProductGrid";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -21,9 +23,11 @@ const Products = () => {
   useEffect(() => {
     //Add Event listener for clicks
     document.addEventListener("mousedown", handleClickOutside);
-    //Clean event listenet
-    document.removeEventListener("mousedown", handleClickOutside);
-  });
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -132,8 +136,24 @@ const Products = () => {
         Filtros
       </button>
       {/*Filter Sidebar */}
-      <div ref={sidebarRef} className={`${isSidebarOpen ? " translate-x-0" : " -translate-x-full"} fixed inset-y-0 z-50 left-0 w-64 bg-white overflow-y-auto transition-transform duration-300 lg:static lg:translate-x-0`}>
+      <div
+        ref={sidebarRef}
+        className={`${
+          isSidebarOpen ? " translate-x-0" : " -translate-x-full"
+        } fixed inset-y-0 z-50 left-0 w-64 bg-white border border-lande-peach-ligth-2 overflow-y-auto transition-transform duration-300 lg:static lg:translate-x-0`}
+      >
         <FilterSideBar />
+      </div>
+      <div className="flex-grow p-4">
+        <h2 className="text-2xl uppercase mb-4 font-bebas">
+          Todos los productos
+        </h2>
+
+        {/*Sort Optons */}
+        <SortOptions />
+
+        {/*Product Grid */}
+        <ProductGrid products={products} />
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const selectedProduct = {
   originalPrice: 600,
   description: "Este es un producto perfecto para regalo",
   colors: ["yellow", "green"],
-  material: "Arcilla natural",
+  material: "Porcelana",
   measures: "alto: 15cm ancho: 7cm",
   technique: "modelado",
 
