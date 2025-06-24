@@ -2,8 +2,16 @@ import { useState } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
 import CartContents from "../Cart/CartContents";
 import TermsModal from "../Modals/TermsModal";
+import { useNavigate } from "react-router-dom";
 
 const CartDrawer = ({ drawerOpen, toggleCartDrawer }) => {
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    toggleCartDrawer();
+    navigate("/checkout");
+  };
+
   const [showTerms, setShowTerms] = useState(false);
 
   return (
@@ -26,7 +34,10 @@ const CartDrawer = ({ drawerOpen, toggleCartDrawer }) => {
 
       {/*Checkout button fixed at the bottom */}
       <div className="p-4 bg-white sticky bottom-0">
-        <button className="w-full bg-lande-peach-2 text-white py-1 rounded-lg font-quicksand hover:bg-lande-peach transition">
+        <button
+          onClick={handleCheckout}
+          className="w-full bg-lande-peach-2 text-white py-1 rounded-lg font-quicksand hover:bg-lande-peach transition"
+        >
           Ir a compra
         </button>
         <p className="font-quicksand text-lande-amber text-xs text-center tracking-tighter ">
