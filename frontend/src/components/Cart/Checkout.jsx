@@ -286,25 +286,25 @@ const Checkout = () => {
               />
             </div>
           </div>
-          <div className=" mt-6">
+          
+         <div className="mt-6">
             {!checkoutId ? (
               <button
                 type="submit"
-                className=" w-full bg-black text-white py-3 rounded hover:bg-lande-peach"
+                className="w-full bg-black text-white py-3 rounded hover:bg-lande-peach"
               >
                 Proceder a Pago
               </button>
             ) : (
               <div>
-                <h3 className=" text-lg mb-4">Pagar con Paypal</h3>
+                <h3 className="text-lg mb-4">Pagar con PayPal</h3>
+                <PaypalButton
+                  amount={cart.totalPrice} // Usa el total del carrito
+                  onSuccess={handlePaymentSuccess}
+                  onError={(err) => alert("Pago Fallido. Vuelve a intentarlo")}
+                />
               </div>
             )}
-            {/*Paypal Component*/}
-            <PaypalButton
-              amount={100}
-              onSuccess={handlePaymentSuccess}
-              onError={(err) => alert("Pago Fallido. Vuelve a intentarlo")}
-            />
           </div>
         </form>
       </div>
