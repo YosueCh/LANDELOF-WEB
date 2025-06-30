@@ -15,7 +15,7 @@ const cart = {
     {
       productId: 2,
       name: "Plato",
-      color: "Azul",
+      color: "Blue",
       quantity: 1,
       price: 80,
       image: "https://picsum.photos/150?random=2",
@@ -41,6 +41,11 @@ const Checkout = () => {
     phone: "",
   });
 
+  //Define los gastos de envío
+  const shippingCost = 100;
+  //Calcula el total final
+  const totalWithShipping = cart.totalPrice + shippingCost;
+
   const handleCreateCheckout = (e) => {
     e.preventDefault();
     setCheckoutId(123);
@@ -48,7 +53,7 @@ const Checkout = () => {
 
   const handlePaymentSuccess = (details) => {
     console.log("Pago aprovado", details);
-    navigate ("/order-confirmation");
+    navigate("/order-confirmation");
   };
 
   return (
@@ -286,8 +291,8 @@ const Checkout = () => {
               />
             </div>
           </div>
-          
-         <div className="mt-6">
+
+          <div className="mt-6">
             {!checkoutId ? (
               <button
                 type="submit"
@@ -299,7 +304,7 @@ const Checkout = () => {
               <div>
                 <h3 className="text-lg mb-4">Pagar con PayPal</h3>
                 <PaypalButton
-                  amount={cart.totalPrice} // Usa el total del carrito
+                  amount={totalWithShipping} 
                   onSuccess={handlePaymentSuccess}
                   onError={(err) => alert("Pago Fallido. Vuelve a intentarlo")}
                 />
@@ -307,6 +312,55 @@ const Checkout = () => {
             )}
           </div>
         </form>
+      </div>
+
+      {/*Right Section */}
+      <div className="bg-lande-peach-ligth-2 p-6 rounded-lg">
+        <h3 className="text-xl mb-4 font-lato">Resumen de Orden</h3>
+        <div className="py-4 mb-4">
+          {cart.products.map((product, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-between py-4 border-b border-lande-peach-ligth" // Borde inferior gris
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-20 h-24 object-cover mr-4"
+              />
+              <div className="flex-1">
+                <h3 className="font-lato text-lg">{product.name}</h3>
+                <p className="font-quicksand text-gray-500">
+                  Color: {product.color}
+                </p>
+                <p className="font-quicksand text-gray-500">
+                  Cantidad: {product.quantity}
+                </p>
+              </div>
+              <p className="font-lato text-xl">
+                ${product.price?.toLocaleString()}
+              </p>
+            </div>
+          ))}
+        </div>
+        
+        {/* Subtotal */}
+        <div className="flex justify-between items-center text-lg  font-lato">
+          <p>Subtotal</p>
+          <p>${cart.totalPrice?.toLocaleString()}</p>
+        </div>
+
+        {/* Gastos de envío */}
+        <div className="font-lato flex justify-between items-center text-lg">
+          <p>Costo de envío</p>
+          <p>${shippingCost.toLocaleString()}</p>
+        </div>
+
+        {/* Total (subtotal + envío) */}
+        <div className="font-lato flex justify-between items-center text-lg mt-4 border-t pt-4">
+          <p className="font-bold">Total (IVA incluido):</p>
+          <p className=" text-lande-peach text-xl font-bold">${totalWithShipping.toLocaleString()}</p>
+        </div>
       </div>
     </div>
   );
