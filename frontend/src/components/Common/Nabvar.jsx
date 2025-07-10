@@ -86,7 +86,7 @@ const Nabvar = () => {
             <SearchBar />
           </div>
           <Link
-            to="/profile"
+            to="/login"
             className="text-lande-willow hover:text-lande-amber"
           >
             <FaRegUser className="h-6 w-6" />

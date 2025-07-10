@@ -21,7 +21,7 @@ const cart = {
       image: "https://picsum.photos/150?random=2",
     },
   ],
-  totalPrice: 130,
+  totalPrice: 180,
 };
 
 const Checkout = () => {
@@ -42,7 +42,7 @@ const Checkout = () => {
   });
 
   //Define los gastos de envío
-  const shippingCost = 100;
+  const shippingCost = 120;
   //Calcula el total final
   const totalWithShipping = cart.totalPrice + shippingCost;
 
@@ -60,7 +60,7 @@ const Checkout = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto py-10 px-6 tracking-tighter">
       {/*Left Section */}
       <div className=" bg-white rounded-lg p-6">
-        <h2 className=" text-3xl uppercase mb-6 font-bebas">Carrito</h2>
+        <h2 className=" text-5xl uppercase mb-6 font-bebas">Carrito</h2>
 
         <form onSubmit={handleCreateCheckout}>
           <h3 className=" text-lg mb-4 font-lato">Detalles de Contacto</h3>
@@ -304,7 +304,7 @@ const Checkout = () => {
               <div>
                 <h3 className="text-lg mb-4">Pagar con PayPal</h3>
                 <PaypalButton
-                  amount={totalWithShipping} 
+                  amount={totalWithShipping}
                   onSuccess={handlePaymentSuccess}
                   onError={(err) => alert("Pago Fallido. Vuelve a intentarlo")}
                 />
@@ -315,13 +315,16 @@ const Checkout = () => {
       </div>
 
       {/*Right Section */}
-      <div className="bg-lande-peach-ligth-2 p-6 rounded-lg">
+      <div className="bg-lande-peach-ligth-2 p-6 rounded-lg flex flex-col h-full">
+        {/* Encabezado */}
         <h3 className="text-xl mb-4 font-lato">Resumen de Orden</h3>
-        <div className="py-4 mb-4">
+
+        {/* Lista de productos (crece según necesidad) */}
+        <div className="flex-1 overflow-y-auto mb-4">
           {cart.products.map((product, index) => (
             <div
               key={index}
-              className="flex items-center justify-between py-4 border-b border-lande-peach-ligth" // Borde inferior gris
+              className="flex items-center justify-between py-4 border-b border-lande-peach-ligth"
             >
               <img
                 src={product.image}
@@ -334,32 +337,35 @@ const Checkout = () => {
                   Color: {product.color}
                 </p>
                 <p className="font-quicksand text-gray-500">
+                  Precio: ${product.price}
+                </p>
+                <p className="font-quicksand text-gray-500">
                   Cantidad: {product.quantity}
                 </p>
               </div>
               <p className="font-lato text-xl">
-                ${product.price?.toLocaleString()}
+                ${(product.price * product.quantity)?.toLocaleString()}
               </p>
             </div>
           ))}
         </div>
-        
-        {/* Subtotal */}
-        <div className="flex justify-between items-center text-lg  font-lato">
-          <p>Subtotal</p>
-          <p>${cart.totalPrice?.toLocaleString()}</p>
-        </div>
 
-        {/* Gastos de envío */}
-        <div className="font-lato flex justify-between items-center text-lg">
-          <p>Costo de envío</p>
-          <p>${shippingCost.toLocaleString()}</p>
-        </div>
-
-        {/* Total (subtotal + envío) */}
-        <div className="font-lato flex justify-between items-center text-lg mt-4 border-t pt-4">
-          <p className="font-bold">Total (IVA incluido):</p>
-          <p className=" text-lande-peach text-xl font-bold">${totalWithShipping.toLocaleString()}</p>
+        {/* Totales (siempre pegados abajo) */}
+        <div className="mt-auto pt-4  border-lande-peach-ligth">
+          <div className="flex justify-between items-center text-lg font-lato mb-2">
+            <p>Subtotal</p>
+            <p>${cart.totalPrice?.toLocaleString()}</p>
+          </div>
+          <div className="flex justify-between items-center text-lg font-lato mb-2">
+            <p>Costo de envío</p>
+            <p>${shippingCost.toLocaleString()}</p>
+          </div>
+          <div className="flex justify-between items-center text-lg font-lato mt-4 pt-4 border-t border-lande-peach-ligth tracking-wide">
+            <p className="font-semibold">Total (IVA incluido):</p>
+            <p className="text-lande-peach text-xl font-semibold">
+              ${totalWithShipping.toLocaleString()}
+            </p>
+          </div>
         </div>
       </div>
     </div>

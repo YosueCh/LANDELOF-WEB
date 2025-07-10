@@ -56,7 +56,7 @@ const FeaturesSection = () => {
             Envíos accesibles
           </h4>
           <p className="text-gray-600 text-sm tracking-tighter">
-            Costo fijo $99 a todo México
+            Costo fijo $120 a todo México
           </p>
         </div>
 

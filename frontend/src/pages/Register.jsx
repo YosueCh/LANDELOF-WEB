@@ -89,7 +89,7 @@ const Register = () => {
           <p className="mt-6 text-center text-sm">
             ¿Ya tienes una cuenta?
             <Link
-              to="/register"
+              to="/login"
               className="text-lande-orang underline pl-2 uppercase"
             >
               Inicia sesión
